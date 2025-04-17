@@ -1,0 +1,124 @@
+/* === Base Reset & Body === */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #eaf4ff;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === Navbar === */
+.navbar {
+    background-color: #0077cc;
+    padding: 1rem 2rem;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #d6ecff;
+}
+
+/* === Card Container === */
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    border: none;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    width: 90%;
+}
+
+/* === Card Header === */
+.card-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #0077cc;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #f0f8ff;
+}
+
+/* === File Upload Input === */
+.form-control[type="file"] {
+    background-color: #f0faff;
+    border: 2px dashed #aad8ff;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form-control[type="file"]:hover {
+    background-color: #d6ecff;
+    border-color: #0077cc;
+}
+
+/* === Scan Button === */
+button[type="submit"] {
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #005fa3;
+}
+
+/* === Footer === */
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* === Scan Results === */
+.scan-results {
+    background-color: #f0faff;
+    border-left: 4px solid #0077cc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+/* === Success Pulse Animation === */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0px rgba(0, 119, 204, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 119, 204, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 0px rgba(0, 119, 204, 0.5);
+    }
+}
+
+.scan-complete {
+    animation: glow 1.5s ease-in-out;
+}

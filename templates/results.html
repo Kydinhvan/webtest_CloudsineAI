@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+
+{% block title %}Scan Results{% endblock %}
+
+{% block content %}
+<section class="results-section">
+    <h2>Scan Results for {{ filename }}</h2>
+    <p><strong>SHA-256 Hash:</strong> {{ filehash }}</p>
+
+    {% if result.data.attributes.stats %}
+        <h3>Detection Summary</h3>
+        <ul class="summary">
+            <li><strong>Harmless:</strong> {{ result.data.attributes.stats.harmless }}</li>
+            <li><strong>Malicious:</strong> {{ result.data.attributes.stats.malicious }}</li>
+            <li><strong>Suspicious:</strong> {{ result.data.attributes.stats.suspicious }}</li>
+            <li><strong>Undetected:</strong> {{ result.data.attributes.stats.undetected }}</li>
+        </ul>
+    {% endif %}
+
+    <h3>Raw API Response</h3>
+    <pre class="json-output">{{ result | tojson(indent=2) }}</pre>
+
+    <a href="/" class="button">Scan Another File</a>
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block content %}
+<section class="upload-section">
+    <h2>Upload a File to Scan</h2>
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="file" id="file" class="form-control" required>
+        <p id="file-info" class="file-info"></p>
+        <button type="submit">Scan File</button>
+    </form>
+    <p class="info">Allowed file types: {{ allowed | join(', ') }}</p>
+</section>
+{% endblock %}
