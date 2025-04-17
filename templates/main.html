@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}VirusTotal App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}VirusTotal Scanner{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
-<body>
-    <nav class="navbar">
-        <a class="navbar-brand" href="/">VT File Scanner</a>
-    </nav>
-
-    <div class="card">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul class="flashes">
-                    {% for category, message in messages %}
-                        <li class="flash {{ category }}">{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-
-        {% block content %}{% endblock %}
+<body style="background: linear-gradient(135deg, #e0f7fa, #e8f5e9);">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/">VT File Scanner</a>
     </div>
+  </nav>
 
-    <footer class="footer">
-        <p>Powered by VirusTotal API &middot; cloudsineAI Assignment</p>
-    </footer>
+  <main class="container-fluid px-5 py-5"> 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+          {% for category, message in messages %}
+            <div class="toast align-items-center text-bg-{{ 'danger' if category == 'danger' else 'primary' }} border-0 show" role="alert">
+              <div class="d-flex">
+                <div class="toast-body">{{ message }}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
 
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer bg-light py-3 border-top text-center">
+    <div class="container-fluid px-5">
+      <span class="text-muted small">Powered by VirusTotal API · cloudsineAI Assignment</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
